@@ -26,7 +26,13 @@ class RedirectIfAuthenticated
                 if (Auth::guard($guard)->check() && Auth::user()->role->id == 1) {
                     return redirect()->route('admin.dashboard');
                 }elseif (Auth::guard($guard)->check() && Auth::user()->role->id == 2) {
-                    return redirect()->route('customer.dashboard');
+                    return redirect()->route('agent.dashboard');
+                }elseif (Auth::guard($guard)->check() && Auth::user()->role->id == 3) {
+                    return redirect()->route('rider.dashboard');
+                }elseif (Auth::guard($guard)->check() && Auth::user()->role->id == 4) {
+                    return redirect()->route('account.dashboard');
+                }elseif (Auth::guard($guard)->check() && Auth::user()->role->id == 5) {
+                    return redirect()->route('user.dashboard');
                 }else {
                     return $next($request);
                 }
@@ -35,17 +41,4 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
-
-    // public function handle(Request $request, Closure $next, $guard = null)
-    // {
-
-    //      if (Auth::guard($guard)->check() && Auth::user()->role->id == 1) {
-    //          return redirect()->route('admin.dashboard');
-    //     }elseif (Auth::guard($guard)->check() && Auth::user()->role->id == 2) {
-    //          return redirect()->route('customer.dashboard');
-    //      }else {
-    //          return $next($request);
-    //     }
-
-    // }
 }

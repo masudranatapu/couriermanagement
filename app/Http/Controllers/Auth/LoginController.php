@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -31,12 +32,21 @@ class LoginController extends Controller
     protected $redirectTo;
 
     protected function redirectTo() {
-        if(auth()->user()->role_id == 1 ) {
+        if(auth()->user()->role_id == 1) {
+            Toastr::success('Welcome to admin dashboard :-)','Success');
             return route('admin.dashboard');
-        }elseif(auth()->user()->role_id == 2 ) {
-            return route('student.dashboard');
-        }elseif(auth()->user()->role_id == 3 ) {
-            return route('teacher.dashboard');
+        }elseif(auth()->user()->role_id == 2) {
+            Toastr::success('Welcome to agent dashboard :-)','Success');
+            return route('agent.dashboard');
+        }elseif(auth()->user()->role_id == 3) {
+            Toastr::success('Welcome to rider dahsboard :-)','Success');
+            return route('rider.dashboard');
+        }elseif(auth()->user()->role_id == 4) {
+            Toastr::success('Welcome to account dashboard :-)','Success');
+            return route('account.dashboard');
+        }elseif(auth()->user()->role_id == 5) {
+            Toastr::success('Welcome to user profile :-)','Success');
+            return route('user.dashboard');
         }else {
             $this->redirectTo = route('login');
         }

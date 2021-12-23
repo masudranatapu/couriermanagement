@@ -34,7 +34,7 @@
                             </form>
                         @endif
                         @if(Auth::check() && auth()->user()->role_id == 2)
-                            <a href="{{route('student.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Student Dashboard</a>
+                            <a href="{{route('agent.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Agent Dashboard</a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
@@ -43,7 +43,26 @@
                             </form>
                         @endif
                         @if(Auth::check() && auth()->user()->role_id == 3)
-                            <a href="{{route('teacher.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Teacher Dashboard</a>
+                            <a href="{{route('rider.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Rider Dashboard</a>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endif
+                        @if(Auth::check() && auth()->user()->role_id == 4)
+                            <a href="{{route('account.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Acount Dashboard</a>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endif
+                        
+                        @if(Auth::check() && auth()->user()->role_id == 5)
+                            <a href="{{route('user.dashboard')}}" class="text-sm text-gray-700 dark:text-gray-500 underline">User Dashboard</a>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
@@ -54,6 +73,8 @@
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
                         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <a href="{{ route('agent.register.store') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Agent Register</a>
+                        <a href="{{ route('rider.register.store') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Rider Register</a>
                     @endauth
                 </div>
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">

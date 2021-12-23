@@ -19,10 +19,16 @@ class RoleTableSeeder extends Seeder
             'name'=> 'Admin',
         ]);
         Role::insert([
-            'name'=> 'Student',
+            'name'=> 'Agent',
         ]);
         Role::insert([
-            'name'=> 'Teacher',
+            'name'=> 'Rider',
+        ]);
+        Role::insert([
+            'name'=> 'Account',
+        ]);
+        Role::insert([
+            'name'=> 'User',
         ]);
     }
 }

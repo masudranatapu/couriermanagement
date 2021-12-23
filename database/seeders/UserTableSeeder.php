@@ -20,18 +20,35 @@ class UserTableSeeder extends Seeder
             'name' => 'Super Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
+            'status' => '1',
         ]);
         User::insert([
             'role_id'=> '2',
-            'name' => 'Student',
-            'email' => 'student@gmail.com',
+            'name' => 'Agent',
+            'email' => 'agent@gmail.com',
             'password' => bcrypt('password'),
+            'status' => '1',
         ]);
         User::insert([
             'role_id'=> '3',
-            'name' => 'Teacher',
-            'email' => 'teacher@gmail.com',
+            'name' => 'Rider',
+            'email' => 'rider@gmail.com',
             'password' => bcrypt('password'),
+            'status' => '1',
+        ]);
+        User::insert([
+            'role_id'=> '4',
+            'name' => 'Account',
+            'email' => 'account@gmail.com',
+            'password' => bcrypt('password'),
+            'status' => '1',
+        ]);
+        User::insert([
+            'role_id'=> '5',
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('password'),
+            'status' => '1',
         ]);
     }
 }
