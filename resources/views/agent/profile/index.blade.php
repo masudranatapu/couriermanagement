@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="profile_update">
-                                <form class="form-horizontal" action="{{route('admin.profile.update', Auth::user()->id)}}" enctype="multipart/form-data" method="POST">
+                                <form class="form-horizontal" action="{{route('agent.profile.update', Auth::user()->id)}}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Name</label>
@@ -120,7 +120,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane" id="password_update">
-                                <form class="form-horizontal" action="{{ route('admin.password.update', Auth::user()->id) }}" method="post">
+                                <form class="form-horizontal" action="{{ route('agent.password.update', Auth::user()->id) }}" method="post">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Old Password</label>

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
-
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -35,9 +36,8 @@ class DashboardController extends Controller
         $slug = "profile";
         if (isset($profile_image)) {
             //make unique name for profile image
-            $currentDate = Carbon::now()->toDateString();
-            $profile_image_name = $slug.'-'.$currentDate.'-'.uniqid().'.'.$profile_image->getClientOriginalExtension();
-            $upload_path = 'extrafile/profile/';
+            $profile_image_name = $slug.'-'.uniqid().'.'.$profile_image->getClientOriginalExtension();
+            $upload_path = 'media/profile/';
             $profile_image_url = $upload_path.$profile_image_name;
 
             // unlink profile image 
@@ -85,5 +85,48 @@ class DashboardController extends Controller
             Toastr::success('something is worng. Please try agian :-)','warning');
             return redirect()->back();
         }
+    }
+    public function userList()
+    {
+        $title = "All Users";
+        $users = User::where('role_id', '!=', 1)->latest()->get();
+        // return $users;
+        return view('admin.users.index', compact('title', 'users'));
+    }
+    public function userDestroy($id)
+    {
+        User::findOrFail($id)->delete();
+        Toastr::warning('User successfully delete :-)','warning');
+        return redirect()->back();
+    }
+    public function userActive($id)
+    {
+        User::findOrFail($id)->update(['status' => '1']);
+        Toastr::info('User Successfully Active :-)','Success');
+        return redirect()->back();
+    }
+    public function userInactive($id)
+    {
+        User::findOrFail($id)->update(['status' => '0']);
+        Toastr::info('User Successfully Inactive :-)','Success');
+        return redirect()->back();
+    }
+    public function userAgent()
+    {
+        $agentusers = User::where('role_id', 2)->latest()->get();
+        $title = "Agent";
+        return view('admin.users.agent', compact('title', 'agentusers'));
+    }
+    public function userRider()
+    {
+        $riderusers = User::where('role_id', 3)->latest()->get();
+        $title = "Riders";
+        return view('admin.users.rider', compact('title', 'riderusers'));
+    }
+    public function userAccount()
+    {
+        $accountusers = User::where('role_id', 4)->latest()->get();
+        $title = "Account";
+        return view('admin.users.account', compact('title', 'accountusers'));
     }
 }

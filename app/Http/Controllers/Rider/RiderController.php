@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 
 class RiderController extends Controller
 {
@@ -55,7 +56,6 @@ class RiderController extends Controller
             $image = User::findOrFail($id);
             $profile_image_url = $image->image;
         }
-        
         User::findOrFail($id)->update([
             'name' => $request->name,
             'email' => $request->email,

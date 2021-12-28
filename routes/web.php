@@ -44,6 +44,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::post('profile/{id}', [DashboardController::class, 'profileUpdate'])->name('profile.update');
     Route::post('pass-updated/{id}', [DashboardController::class, 'updatePass'])->name('password.update');
 
+    // user information 
+    Route::get('users/user-list', [DashboardController::class, 'userList'])->name('user.list');
+    Route::get('users/user-list-delete/{id}', [DashboardController::class, 'userDestroy'])->name('user.destroy');
+    Route::get('users/user-active/{id}', [DashboardController::class, 'userActive'])->name('user.active');
+    Route::get('users/user-inactive/{id}', [DashboardController::class, 'userInactive'])->name('user.inactive');
+    Route::get('users/agent-list', [DashboardController::class, 'userAgent'])->name('user.agent');
+    Route::get('users/riders-list', [DashboardController::class, 'userRider'])->name('user.rider');
+    Route::get('users/account-list', [DashboardController::class, 'userAccount'])->name('user.account');
+
     // website seeting
     Route::resource('website', WebsiteController::class);
 

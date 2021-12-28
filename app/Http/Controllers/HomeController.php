@@ -9,6 +9,7 @@ class HomeController extends Controller
     
     public function welcome()
     {
-        return view('welcome');
+        $title = "Home";
+        return view('welcome', compact('title'));
     }
 }

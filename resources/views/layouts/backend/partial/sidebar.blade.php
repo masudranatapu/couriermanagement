@@ -16,63 +16,38 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('admin/users/user-list') || Request::is('admin/user/agent-list') || Request::is('admin/user/riders-list') || Request::is('admin/user/account-list') ? 'menu-open' : '' }}"">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                Layout Options
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
+                                    Users
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
-                                </a>
+                                    <a href="{{route('admin.user.list')}}" class="nav-link {{ Request::is('admin/users/user-list') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All User</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation + Sidebar</p>
-                                </a>
+                                    <a href="{{ route('admin.user.agent') }}" class="nav-link {{ Request::is('admin/user/agent-list') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agent</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
+                                    <a href="{{ route('admin.user.rider') }}" class="nav-link {{ Request::is('admin/user/riders-list') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Rider</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                                </li>
-                                <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                </a>
-                                </li>
-                                <li class="nav-item">
-                                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                                </li>
-                                <li class="nav-item">
-                                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                                </li>
-                                <li class="nav-item">
-                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
-                                </a>
+                                    <a href="{{ route('admin.user.account') }}" class="nav-link {{ Request::is('admin/user/account-list') ? 'active':'' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Account</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
